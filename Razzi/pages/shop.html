@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razzi - Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="../assets/css/owl.theme.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <div id="barsSidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeBarsNav()">&times;</a>
+        <a href="./index.html">Home</a>
+        <a href="./shop.html">Shop</a>
+        <a href="./blog.html">Blog</a>
+        <a href="./wishlist.html">Wishlist</a>
+        <a href="./cart.html">Cart</a>
+    </div>
+    <div id="searchSidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSearchNav()">&times;</a>
+        <div class="search-wrapper">
+            <form>
+                <div class="search d-flex">
+                    <input type="search" placeholder="Search for items" aria-label="Search">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <header>
+        <div class="header_wrapper">
+            <div class="container">
+                <div class="header">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="header-logo">
+                                        <a href="./index.html">
+                                            <img src="../assets/img/Logo-dark.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="header-right">
+                                <div class="row">
+                                    <div class="col-1">
+                                        <div class="header_item">
+                                            <span style="cursor: pointer;" onclick="openSearchNav()"><i
+                                                    class="fas fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-1">
+                                        <div class="header_item">
+                                            <a href="./account.html"><i class="fas fa-user"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-1">
+                                        <div class="header_item">
+                                            <a href="./wishlist.html"><i class="fas fa-heart"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-1">
+                                        <div class="header_item busket">
+                                            <a href="./cart.html"><i class="fas fa-shopping-bag"></i></a>
+                                            <div class="count">0</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-1">
+                                        <div class="header_item">
+                                            <span style="cursor: pointer;" onclick="openBarsNav()"><i
+                                                    class="fas fa-bars"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main style="padding-top: 150px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-3 xol-12">
+                    <section id="product_filter">
+                        <div class="row">
+                            <div class="col-xxl-12 col-4">
+                                <div class="product-filter">
+                                    <div class="head">
+                                        <span>Category</span>
+                                        <span class="open-btn"><i class='fas fa-angle-down'></i></span>
+                                    </div>
+                                    <div class="filter-control active">
+                                        <div class="item">
+                                            <label class="checkbox bounce">
+                                                <input type="checkbox">
+                                                <svg viewBox="0 0 21 21">
+                                                    <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                                                </svg>
+                                            </label>
+                                            <span>Mens</span>
+                                        </div>
+                                        <div class="item">
+                                            <label class="checkbox bounce">
+                                                <input type="checkbox">
+                                                <svg viewBox="0 0 21 21">
+                                                    <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                                                </svg>
+                                            </label>
+                                            <span>Womens</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xxl-12 col-4">
+                                <div class="product-filter">
+                                    <div class="head">
+                                        <span>Size</span>
+                                        <span class="open-btn"><i class='fas fa-angle-down'></i></span>
+                                    </div>
+                                    <div class="filter-control active">
+                                        <div class="sizes" id="product-size">
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <div class="size" data-id="1">6</div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="size" data-id="2">6.5</div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="size" data-id="3">7</div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="size" data-id="4">7.5</div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="size" data-id="5">8</div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="size" data-id="6">8.5</div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="size" data-id="7">9</div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="size" data-id="8">9.5</div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="size" data-id="9">10</div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="size" data-id="10">11</div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="size" data-id="11">12</div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="size" data-id="12">13</div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="size" data-id="13">14</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xxl-12 col-4">
+                                <div class="product-filter">
+                                    <div class="head">
+                                        <span>Price</span>
+                                        <span class="open-btn"><i class='fas fa-angle-down'></i></span>
+                                    </div>
+                                    <div class="filter-control active">
+                                        <div class="item">
+                                            <label class="checkbox bounce">
+                                                <input type="checkbox">
+                                                <svg viewBox="0 0 21 21">
+                                                    <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                                                </svg>
+                                            </label>
+                                            <span>$10.00 - $49.00</span>
+                                        </div>
+                                        <div class="item">
+                                            <label class="checkbox bounce">
+                                                <input type="checkbox">
+                                                <svg viewBox="0 0 21 21">
+                                                    <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                                                </svg>
+                                            </label>
+                                            <span>$50.00 - $99.00</span>
+                                        </div>
+                                        <div class="item">
+                                            <label class="checkbox bounce">
+                                                <input type="checkbox">
+                                                <svg viewBox="0 0 21 21">
+                                                    <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                                                </svg>
+                                            </label>
+                                            <span>$100.00 - $199.00</span>
+                                        </div>
+                                        <div class="item">
+                                            <label class="checkbox bounce">
+                                                <input type="checkbox">
+                                                <svg viewBox="0 0 21 21">
+                                                    <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                                                </svg>
+                                            </label>
+                                            <span>$200.00 +</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-8">
+                    <div class="shop-advertising">
+                        <div class="row">
+                            <div class="col-12">
+                                <img style="width: 100%;" src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/catalog_banner1.jpg?fit=1170%2C511&amp;ssl=1" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <section id="products">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="head-side d-flex justify-content-between">
+                                    <div class="header">
+                                        <h1>Shop</h1>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                          Default sorting
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                          <li><a class="dropdown-item" href="#">Sort by price: low to high</a></li>
+                                          <li><a class="dropdown-item" href="#">Sort by price: high to low</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <div class="product">
+                                                <div class="img">
+                                                    <a href=""><img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/10/w131.jpg?resize=370%2C432&amp;ssl=1" alt=""></a>
+                                                </div>
+                                                <div class="name">
+                                                    <a href="">Bag with Flap</a>
+
+                                                </div>
+                                                <span class="price">$11.05</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="product">
+                                                <div class="img">
+                                                    <a href=""><img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/w51.jpg?resize=370%2C432&amp;ssl=1" alt=""></a>
+                                                </div>
+                                                <div class="name">
+                                                    <a href="">Basic Dress Green</a>
+
+                                                </div>
+                                                <span class="price">$236.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="product">
+                                                <div class="img">
+                                                    <a href=""><img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/k121.jpg?resize=370%2C432&amp;ssl=1" alt=""></a>
+                                                </div>
+                                                <div class="name">
+                                                    <a href="">Basic Knit Pompom</a>
+
+                                                </div>
+                                                <span class="price">$100.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="product">
+                                                <div class="img">
+                                                    <a href=""><img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/w71.jpg?resize=370%2C432&amp;ssl=1" alt=""></a>
+                                                </div>
+                                                <div class="name">
+                                                    <a href="">Basic Long Sleeve</a>
+
+                                                </div>
+                                                <span class="price">$20.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-4">
+                        <div class="footer-logo">
+                            <a href="./index.html">
+                                <img src="../assets/img/Logo-light.png" alt="">
+                            </a>
+                        </div>
+                        <div class="social-medias d-flex">
+                            <div class="item"><i class="fab fa-facebook-f"></i></div>
+                            <div class="item"><i class="fab fa-twitter"></i></div>
+                            <div class="item"><i class="fab fa-google"></i></div>
+                            <div class="item"><i class="fab fa-tumblr"></i></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-4">
+                        <div class="header">
+                            <p>SUPPORT</p>
+                        </div>
+                        <div class="links">
+                            <div class="link">
+                                <a href="./contact.html">Contact Us</a>
+                            </div>
+                            <div class="link">
+                                <a href="#">FAQs</a>
+                            </div>
+                            <div class="link">
+                                <a href="#">Size Guide</a>
+                            </div>
+                            <div class="link">
+                                <a href="#">Shipping & Returns</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-4">
+                        <div class="header">
+                            <p>SHOP</p>
+                        </div>
+                        <div class="links">
+                            <div class="link">
+                                <a href="">Men's Shopping</a>
+                            </div>
+                            <div class="link">
+                                <a href="#">Women's Shopping</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-4">
+                        <div class="header">
+                            <p>COMPANY</p>
+                        </div>
+                        <div class="links">
+                            <div class="link">
+                                <a href="./about.html">Our Story</a>
+                            </div>
+                            <div class="link">
+                                <a href="#">Careers</a>
+                            </div>
+                            <div class="link">
+                                <a href="#">Terms & Conditions</a>
+                            </div>
+                            <div class="link">
+                                <a href="#">Privacy & Cookie Policy</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-4">
+                        <div class="header">
+                            <p>CONTACT</p>
+                        </div>
+                        <div class="links">
+                            <div class="link">
+                                1-888-923-8044
+                            </div>
+                            <div class="link">
+                                1-888-923-8055
+                            </div>
+                            <div class="link">
+                                help@allbirds.com
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="go-top"><i class="fas fa-angle-right"></i></button>
+    <script src="https://kit.fontawesome.com/122825afc7.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../assets/js/owl.carousel.js"></script>
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>

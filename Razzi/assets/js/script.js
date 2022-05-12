@@ -71,4 +71,19 @@ $(document).ready(function () {
         $("html, body").animate({scrollTop: 0}, 1000);
     })
 
+
+    var openBtn = $('#product_filter').find('.product-filter').find('.head').find('.open-btn');
+
+    openBtn.click(function(){
+        if ($(this).parent().parent().find('.filter-control').hasClass("active")) {
+            $(this).parent().parent().find('.filter-control').removeClass("active")
+            $(this).parent().parent().find('.filter-control').slideUp();
+            $(this).html("<i class='fas fa-angle-right'></i>");
+        }else{
+            $(this).parent().parent().find('.filter-control').addClass("active");
+            $(this).parent().parent().find('.filter-control').slideDown();
+            $(this).html("<i class='fas fa-angle-down'></i>");
+        }
+    })
+
 });
