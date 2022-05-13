@@ -1,5 +1,6 @@
 @import "./pages/shop";
 @import "./pages/account";
+@import "./pages/about";
 * {
     margin: 0;
     padding: 0;
@@ -447,14 +448,15 @@ body {
             }
         }
     }
-    .video{
-        margin-top: 100px;
-        height: 651.08;
-        display: flex;
-        justify-content: center;
-        video{
-            height: 854.55px;
-        }
+}
+
+.video{
+    margin-top: 100px;
+    height: 651.08;
+    display: flex;
+    justify-content: center;
+    video{
+        height: 854.55px;
     }
 }
 

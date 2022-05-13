@@ -87,14 +87,10 @@ $(document).ready(function () {
     })
 
 
-    $('.show-password').click(function(){
-        if($(this).prev().hasClass('hidden')){
-            $(this).prev().removeClass('hidden')
-            $(this).prev().attr('type','text');
-        }
-        else{
-            $(this).prev().addClass('hidden')
-            $(this).prev().attr('type','password');
-        }
-    })
+    $('.show-password').on('mousedown',function(){
+        $(this).prev().attr('type','text');
+        
+    }).on('mouseup mouseleave', function(){
+        $(this).prev().attr('type','password');
+    });
 });

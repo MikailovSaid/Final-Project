@@ -293,6 +293,111 @@
   color: white;
 }
 
+#about-intro .banner {
+  position: relative;
+}
+
+#about-intro .banner .img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#about-intro .banner .text {
+  position: absolute;
+  color: white;
+  top: 170px;
+  left: 440px;
+  width: 400px;
+  text-align: center;
+}
+
+#about-intro .banner .text h2 {
+  font-size: 44px;
+  font-weight: 500;
+}
+
+#about-shop {
+  margin-top: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+#about-shop .header {
+  text-align: center;
+}
+
+#about-shop .header h3 {
+  font-size: 36px;
+}
+
+#about-shop .text {
+  width: 75%;
+  font-size: 18px;
+  color: #525252;
+  margin-left: 10%;
+  margin-top: 40px;
+}
+
+#about-shop .button {
+  margin-top: 40px;
+  text-align: center;
+}
+
+#about-shop .button button {
+  background-color: black;
+  color: white;
+  width: 176px;
+  height: 51px;
+}
+
+#warning {
+  margin-top: 100px;
+}
+
+#warning .banner {
+  background-color: #FF7062;
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 100px;
+}
+
+#warning .banner .text {
+  width: 860px;
+  font-size: 24px;
+  text-align: center;
+  color: white;
+}
+
+#about-images {
+  margin-top: 100px;
+}
+
+#about-images .left-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+#about-images .right-side {
+  margin-top: 100px;
+}
+
+#about-images .bottom-img {
+  margin-top: 20px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -797,7 +902,7 @@ body a {
   color: black;
 }
 
-#about-area .video {
+.video {
   margin-top: 100px;
   height: 651.08;
   display: -webkit-box;
@@ -808,7 +913,7 @@ body a {
           justify-content: center;
 }
 
-#about-area .video video {
+.video video {
   height: 854.55px;
 }
 
