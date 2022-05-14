@@ -708,6 +708,19 @@
   padding-left: 10px;
 }
 
+#after-login .name {
+  font-size: 36px;
+  color: #525252;
+}
+
+#after-login .name b {
+  color: black;
+}
+
+#after-login a {
+  font-size: 18px;
+}
+
 * {
   margin: 0;
   padding: 0;
