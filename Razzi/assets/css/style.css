@@ -730,6 +730,7 @@
 
 body {
   font-family: 'Jost', Arial, sans-serif;
+  overflow-x: hidden;
 }
 
 body a {
@@ -1238,6 +1239,7 @@ body a {
 
 .video video {
   height: 854.55px;
+  width: 100%;
 }
 
 #blog-area {

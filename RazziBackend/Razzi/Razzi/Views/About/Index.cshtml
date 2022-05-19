@@ -1,0 +1,137 @@
+﻿@model AboutVM
+@{
+    ViewData["Title"] = "About Us - Razzi";
+}
+
+<main style="padding-top: 150px;">
+    <section id="about-intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="banner">
+                        <div class="img">
+                            <img src="@Model.IntroAbout.Image"
+                                 alt="">
+                        </div>
+                        <div class="text">
+                            <h2>@Model.IntroAbout.Text</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Area Starts -->
+    @await Component.InvokeAsync("AboutArea")
+    <!-- About Area Ends -->
+
+    <section id="about-shop" style="background-color: #f5f5f5;">
+        <div class="container">
+            <div class="header">
+                <h3>Fashion Democracy</h3>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="text">
+                        <p>
+                            @Model.LeftSideAboutShop.LongText
+                        </p>
+                        <p>
+                            @Model.LeftSideAboutShop.ShortText
+                        </p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="text">
+                        <p>
+                            @Model.RightSideAboutShop.LongText
+                        </p>
+                        <p>
+                            @Model.RightSideAboutShop.ShortText
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="button">
+                <button><a asp-controller="Shop" asp-action="Index">Shop Now <i class="fas fa-arrow-right"></i></a></button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-6 col-12">
+                    <div class="right-side">
+                        <p>WHO WE ARE</p>
+                        <h3>Our Story</h3>
+                        <div class="text">
+                            <p>
+                                @Model.AboutOurStory.LongText
+                            </p>
+                            <p>
+                                @Model.AboutOurStory.ShortText
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-6 col-12">
+                    <div class="left-side">
+                        <div class="first-img">
+                            <img src="@Model.AboutOurStory.BackImg"
+                                 alt="">
+                        </div>
+                        <div class="second-img">
+                            <img src="@Model.AboutOurStory.FrontImg"
+                                 alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="warning">
+        <div class="container">
+            <div class="banner">
+                <div class="text">
+                    @Model.WarningBanner.Text
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about-images">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-12">
+                    <div class="left-side">
+                        <div class="imgs">
+                            <div class="top-img">
+                                <img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/about-us-img3.jpg?fit=470%2C540&amp;ssl=1" alt="">
+                            </div>
+                            <div class="bottom-img">
+                                <img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/about-us-img5.jpg?fit=470%2C340&amp;ssl=1" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-12">
+                    <div class="right-side">
+                        <div class="top-img">
+                            <img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/about-us-img4.jpg?fit=470%2C340&amp;ssl=1" alt="">
+                        </div>
+                        <div class="bottom-img">
+                            <img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/about-us-img6.jpg?fit=470%2C540&amp;ssl=1" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Area Starts -->
+    @await Component.InvokeAsync("BlogArea")
+    <!-- Blog Area Ends -->
+</main>

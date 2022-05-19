@@ -93,4 +93,5 @@ $(document).ready(function () {
     }).on('mouseup mouseleave', function(){
         $(this).prev().attr('type','password');
     });
+
 });

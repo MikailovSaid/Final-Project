@@ -1,0 +1,44 @@
+.account{
+    background-color: white;
+    padding-top: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 500px;
+    .header{
+        margin-bottom: 30px;
+        h2{
+            font-size: 20px;
+        }
+    }
+    .input-item{
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid rgba(0,0,0,0.21);
+        height: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+        input{
+            border: none;
+            outline: none;
+            width: 475px;
+        }
+        i{
+            cursor: pointer;
+            color: #52525294;
+            &:hover{
+                color: black;
+            }
+        }
+        
+    }
+    .submit-btn{
+        button{
+            width: 160px;
+            height: 46px;
+            background-color: black;
+            color: white;
+        }
+    }
+}

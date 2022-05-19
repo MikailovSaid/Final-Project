@@ -1,0 +1,38 @@
+#wishlist{
+    .header{
+        display: flex;
+        justify-content: center;
+    }
+    .product-info{
+        margin-top: 100px;
+        background-color: #f8f8f8;
+        height: 54px;
+        padding-top: 15px;
+    }
+    .product{
+        margin-top: 20px;
+        .remove-btn{
+            text-align: center;
+        }
+        .price{
+            color: #767676;
+        }
+        .stock-status{
+            color: #679900
+        }
+        .add-to-cart-btn{
+            button{
+                width: 214px;
+                height: 50px;
+                background-color: black;
+                color: white;
+            }
+            padding-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+        .pt{
+            padding-top: 45px;
+        }
+    }
+}

@@ -1,0 +1,37 @@
+﻿@model AboutArea
+
+<section id="about-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-6 col-12">
+                <div class="left-side">
+                    <div class="first-img">
+                        <img src="@Model.BackImg"
+                             alt="">
+                    </div>
+                    <div class="second-img">
+                        <img src="@Model.FrontImg"
+                             alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-6 col-12">
+                <div class="right-side">
+                    <p>OUR STORY</p>
+                    <h3>@Model.Header</h3>
+                    <div class="text">
+                        <p>
+                            @Model.LongDesc
+                        </p>
+                        <p>
+                            @Model.ShortDesc
+                        </p>
+                    </div>
+                    <div class="navigate-btn">
+                        <a asp-controller="About" asp-action="Index">Discover More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,223 @@
+﻿@model ShopVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main style="padding-top: 150px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-3 xol-12">
+                <section id="product_filter">
+                    <div class="row">
+                        <div class="col-xxl-12 col-4">
+                            <div class="product-filter">
+                                <div class="head">
+                                    <span>Category</span>
+                                    <span class="open-btn"><i class='fas fa-angle-down'></i></span>
+                                </div>
+                                <div class="filter-control active">
+                                    @foreach (var item in Model.Categories)
+                                    {
+                                        <div class="item">
+                                            <label class="checkbox bounce">
+                                                <input type="checkbox" value="@item.Id">
+                                                <svg viewBox="0 0 21 21">
+                                                    <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                                                </svg>
+                                            </label>
+                                            <span>@item.Name</span>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-12 col-4">
+                            <div class="product-filter">
+                                <div class="head">
+                                    <span>Gender</span>
+                                    <span class="open-btn"><i class='fas fa-angle-down'></i></span>
+                                </div>
+                                <div class="filter-control active">
+                                    @foreach (var item in Model.Genders)
+                                    {
+                                        <div class="item">
+                                            <label class="checkbox bounce">
+                                                <input type="checkbox">
+                                                <svg viewBox="0 0 21 21">
+                                                    <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                                                </svg>
+                                            </label>
+                                            <span>@item.Name</span>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-12 col-4">
+                            <div class="product-filter">
+                                <div class="head">
+                                    <span>Size</span>
+                                    <span class="open-btn"><i class='fas fa-angle-down'></i></span>
+                                </div>
+                                <div class="filter-control active">
+                                    <div class="sizes" id="product-size">
+                                        <div class="row">
+                                            @foreach (var size in Model.Sizes)
+                                            {
+                                                <div class="col-3">
+                                                    <div class="size">@size.Name</div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-12 col-4">
+                            <div class="product-filter">
+                                <div class="head">
+                                    <span>Price</span>
+                                    <span class="open-btn"><i class='fas fa-angle-down'></i></span>
+                                </div>
+                                <div class="filter-control active">
+                                    <div class="item">
+                                        <label class="checkbox bounce">
+                                            <input type="checkbox">
+                                            <svg viewBox="0 0 21 21">
+                                                <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                                            </svg>
+                                        </label>
+                                        <span>$10.00 - $49.00</span>
+                                    </div>
+                                    <div class="item">
+                                        <label class="checkbox bounce">
+                                            <input type="checkbox">
+                                            <svg viewBox="0 0 21 21">
+                                                <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                                            </svg>
+                                        </label>
+                                        <span>$50.00 - $99.00</span>
+                                    </div>
+                                    <div class="item">
+                                        <label class="checkbox bounce">
+                                            <input type="checkbox">
+                                            <svg viewBox="0 0 21 21">
+                                                <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                                            </svg>
+                                        </label>
+                                        <span>$100.00 - $199.00</span>
+                                    </div>
+                                    <div class="item">
+                                        <label class="checkbox bounce">
+                                            <input type="checkbox">
+                                            <svg viewBox="0 0 21 21">
+                                                <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                                            </svg>
+                                        </label>
+                                        <span>$200.00 +</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-8">
+                <div class="shop-advertising">
+                    <div class="row">
+                        <div class="col-12">
+                            <img style="width: 100%;"
+                                 src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/catalog_banner1.jpg?fit=1170%2C511&amp;ssl=1"
+                                 alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <section id="products">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="head-side d-flex justify-content-between">
+                                <div class="header">
+                                    <h1>Shop</h1>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Default sorting
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="#">Sort by price: low to high</a></li>
+                                        <li><a class="dropdown-item" href="#">Sort by price: high to low</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="content">
+                                <div class="row">
+                                    @foreach (var product in Model.PaginatedProducts.Datas)
+                                    {
+                                        <div class="col-3">
+                                            <div class="product">
+                                                <div class="img">
+                                                    <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@product.Id">
+                                                        <img src="@product.Image"
+                                                             alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="name">
+                                                    <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@product.Id">@product.Name</a>
+
+                                                </div>
+                                                <span class="price">$@product.Price</span>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="pagniate">
+                    <nav aria-label="...">
+                        <ul class="pagination">
+                            <li class="item @(Model.PaginatedProducts.HasPrevious ? "": "disabled")">
+                                <a class="link" asp-action="Index" asp-route-page="@(Model.PaginatedProducts.CurrentPage-1)"><i class="fas fa-angle-left"></i></a>
+                            </li>
+                            @for (int i = 1; i <= Model.PaginatedProducts.TotalPage; i++)
+                            {
+                                <li class="item @(Model.PaginatedProducts.CurrentPage==i ? "active": "")">
+                                    <a class="link" asp-action="Index" asp-route-page="@i">@i</a>
+                                </li>
+                            }
+                            <li class="item @(Model.PaginatedProducts.HasNext ? "": "disabled")">
+                                <a class="link" asp-action="Index" asp-route-page="@(Model.PaginatedProducts.CurrentPage+1)"><i class="fas fa-angle-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts
+{
+    <script>
+    function collectFilters()
+    {
+        var url = '@Url.Action("UpdateProductList")'
+        $.ajax(url,
+        {
+            type: 'GET',
+            data: {
+                gender:$('input[name="gender"]:checked').val(),
+                },
+            success: (data) => { $('#p').html(data) }
+        })
+    }
+    $('input').on('change',collectFilters)
+    </script>
+}

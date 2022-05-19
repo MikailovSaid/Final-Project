@@ -1,0 +1,110 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main style="padding-top: 50px;">
+    <section id="product-detail">
+        <div class="container">
+            <div class="content">
+                <div class="row">
+                    <div class="col-xxl-5 col-12">
+                        <div class="img">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselExampleIndicators"
+                                            data-bs-slide-to="0" class="active" aria-current="true"
+                                            aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators"
+                                            data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators"
+                                            data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="@Model.Image"
+                                             class="d-block w-100" alt="...">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button"
+                                        data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button"
+                                        data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-7 col-12 mt-4">
+                        <div class="category">
+                            <p>@Model.Gender.Name</p>
+                        </div>
+                        <div class="name">
+                            <h1>@Model.Name</h1>
+                        </div>
+                        <div class="price-wrapper">
+                            <span class="price">$@Model.Price</span>
+                            @if (Model.StockStatus == true)
+                            {
+                                <span class="stock-status">(In Stock)</span>
+                            }
+                            else
+                            {
+                                <span class="stock-status">(Out of order)</span>
+                            }
+                        </div>
+                        <div class="description">
+                            <p>
+                                @Model.Desc
+                            </p>
+                        </div>
+                        <div class="categories">
+                            <span><b>Categorie:</b> @Model.Category.Name, @Model.Gender.Name</span>
+                        </div>
+                        @if (Model.StockStatus == true)
+                        {
+                            <div class="sizes" id="product-size">
+                                <p>Size</p>
+                                <div class="row">
+                                    @foreach (var item in Model.ProductSizes)
+                                    {
+                                        <div class="col-1">
+                                            <div class="size">@item.Size.Name</div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="product-buttons">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="count d-flex justify-content-around">
+                                            <button id="down-count"><i class="fas fa-minus"></i></button>
+                                            <input id="count" type="number" name="" id="" min="1" value="1">
+                                            <button id="up-count"><i class="fas fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-5 d-flex justify-content-center">
+                                        <div class="add-to-cart">
+                                            <button id="add-to-cart-btn" type="submit" disabled>
+                                                Add To Cart <i class="fas fa-shopping-bag"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="wishlist">
+                                            <button type="submit">Wishlist <i class="fas fa-heart"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
