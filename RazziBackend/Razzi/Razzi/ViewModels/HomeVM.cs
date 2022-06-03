@@ -12,5 +12,7 @@ namespace Razzi.ViewModels
         public List<BestSellers> BestSellers { get; set; }
         public Video Video { get; set; }
         public List<Gender> Genders { get; set; }
+        public List<Product> Products { get; set; }
+        public List<Category> Categories { get; set; }
     }
 }

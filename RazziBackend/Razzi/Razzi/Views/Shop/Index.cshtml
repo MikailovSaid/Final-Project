@@ -15,17 +15,17 @@
                                     <span>Category</span>
                                     <span class="open-btn"><i class='fas fa-angle-down'></i></span>
                                 </div>
-                                <div class="filter-control active">
+                                <div id="category" class="filter-control active">
                                     @foreach (var item in Model.Categories)
                                     {
                                         <div class="item">
                                             <label class="checkbox bounce">
-                                                <input type="checkbox" value="@item.Id">
+                                                <input class="checkbox-input" type="checkbox" value="@item.Id">
                                                 <svg viewBox="0 0 21 21">
                                                     <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                                                 </svg>
                                             </label>
-                                            <span>@item.Name</span>
+                                            <span value="@item.Id">@item.Name</span>
                                         </div>
                                     }
 
@@ -38,12 +38,12 @@
                                     <span>Gender</span>
                                     <span class="open-btn"><i class='fas fa-angle-down'></i></span>
                                 </div>
-                                <div class="filter-control active">
+                                <div id="gender" class="filter-control active">
                                     @foreach (var item in Model.Genders)
                                     {
                                         <div class="item">
                                             <label class="checkbox bounce">
-                                                <input type="checkbox">
+                                                <input name="category" type="checkbox" value="@item.Id">
                                                 <svg viewBox="0 0 21 21">
                                                     <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                                                 </svg>
@@ -66,7 +66,7 @@
                                             @foreach (var size in Model.Sizes)
                                             {
                                                 <div class="col-3">
-                                                    <div class="size">@size.Name</div>
+                                                    <div id="@size.Id" class="size">@size.Name</div>
                                                 </div>
                                             }
                                         </div>
@@ -154,49 +154,16 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="content">
-                                <div class="row">
-                                    @foreach (var product in Model.PaginatedProducts.Datas)
-                                    {
-                                        <div class="col-3">
-                                            <div class="product">
-                                                <div class="img">
-                                                    <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@product.Id">
-                                                        <img src="@product.Image"
-                                                             alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="name">
-                                                    <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@product.Id">@product.Name</a>
-
-                                                </div>
-                                                <span class="price">$@product.Price</span>
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
+                            <div id="product-list">
+                                <partial name="_ProductsPartialView" model="Model.Products" />
                             </div>
                         </div>
                     </div>
                 </section>
+                <input type="hidden" name="name" id="product-count" value="@ViewBag.ProductCount" />
 
-                <div class="pagniate">
-                    <nav aria-label="...">
-                        <ul class="pagination">
-                            <li class="item @(Model.PaginatedProducts.HasPrevious ? "": "disabled")">
-                                <a class="link" asp-action="Index" asp-route-page="@(Model.PaginatedProducts.CurrentPage-1)"><i class="fas fa-angle-left"></i></a>
-                            </li>
-                            @for (int i = 1; i <= Model.PaginatedProducts.TotalPage; i++)
-                            {
-                                <li class="item @(Model.PaginatedProducts.CurrentPage==i ? "active": "")">
-                                    <a class="link" asp-action="Index" asp-route-page="@i">@i</a>
-                                </li>
-                            }
-                            <li class="item @(Model.PaginatedProducts.HasNext ? "": "disabled")">
-                                <a class="link" asp-action="Index" asp-route-page="@(Model.PaginatedProducts.CurrentPage+1)"><i class="fas fa-angle-right"></i></a>
-                            </li>
-                        </ul>
-                    </nav>
+                <div class="show-more-btn d-flex justify-content-center mt-4">
+                    <button id="load-more">Load more</button>
                 </div>
             </div>
         </div>
@@ -206,18 +173,132 @@
 @section Scripts
 {
     <script>
-    function collectFilters()
-    {
-        var url = '@Url.Action("UpdateProductList")'
-        $.ajax(url,
+        var genders = $('#gender').find('input[type="checkbox"]');
+        var categories = $('#category').find('input[type="checkbox"]');
+        var sizes = $('#product-size').find('.size');
+
+        let gens = [];
+       
+        $(genders).click(function ()
         {
-            type: 'GET',
-            data: {
-                gender:$('input[name="gender"]:checked').val(),
-                },
-            success: (data) => { $('#p').html(data) }
+
+            if ($(this).prop("checked") == true) {
+                gens.push(parseInt($(this).val()));
+
+                $.ajax(
+                    {
+                        type: "GET",
+                        url: '/Shop/GetProducts',
+                        data: $.param({ genderId: gens }, true),
+                        contentType: 'application/json; charset=utf-8',
+                   
+                        success: function (res) {
+                            $('#product-list').html(res);
+                        }
+                    })
+            }
+            else if ($(this).prop("checked") == false) {
+                var id = 2;
+                var index = gens.map(x => {
+                    return x.Id;
+                }).indexOf(id);
+
+                gens.splice(index, 1);
+                console.log(gens);
+                $.ajax(
+                {
+                    url :"/Shop/GetProducts",
+                    type: 'GET',
+                    data: $.param({ genderId: gens }, true),
+                    contentType: 'application/json; charset=utf-8',
+
+                    success: function (res) {
+                        $('#product-list').html(res);
+                    }
+                })
+            }
+            
         })
-    }
-    $('input').on('change',collectFilters)
+        $(categories).click(function () {
+            console.log("ok");
+            gens.push(parseInt($(this).val()));
+            if ($(this).prop("checked") == true) {
+                $.ajax({
+                    type: "GET",
+                    url: '/Shop/GetProducts',
+                    data: $.param({ categoryId: gens }, true),
+                    contentType: 'application/json; charset=utf-8',
+
+                    success: function (res) {
+                        $('#product-list').html(res);
+                    }
+                })
+            }
+            else if ($(this).prop("checked") == false) {
+                var id = 2;
+                var index = gens.map(x => {
+                    return x.Id;
+                }).indexOf(id);
+
+                $.ajax({
+                    url: "/Shop/GetProducts",
+                    type: 'GET',
+                    data: {
+                        categoryId: null
+                    },
+                    success: function (res) {
+                        $('#product-list').html(res);
+                    }
+                })
+            }
+        })
+        $("#product-size").find('.size').click(function () {
+            if (!$(this).hasClass('active')) {
+                $.ajax({
+                    url: "https://localhost:44331/Shop/GetProducts",
+                    type: 'GET',
+                    data: {
+                        sizeId: $(this).attr("id")
+                    },
+                    success: function (res) {
+                        $('#product-list').html(res);
+                    }
+                })
+            }
+            else {
+                $.ajax({
+                    url: "https://localhost:44331/Shop/GetProducts",
+                    type: 'GET',
+                    data: {
+                        sizeId: null
+                    },
+                    success: function (res) {
+                        $('#product-list').html(res);
+                    }
+                })
+            }
+        })
+
+
+        $('#load-more').click(function () {
+            let parent = $('#product-list')
+            let count = $("#product-list").find('.col-3').length
+            let productCountDb = $("#product-count").val()
+            $.ajax({
+                url: "/Shop/LoadMore",
+                type: "GET",
+                data: {
+                    skip: count
+                },
+                success: function (res) {
+                    parent.append(res)
+                    
+                    count = $("#product-list").find('.col-3').length
+                    if (count == productCountDb) {
+                        $("#load-more").remove();
+                    }
+                }
+            })
+        })
     </script>
 }

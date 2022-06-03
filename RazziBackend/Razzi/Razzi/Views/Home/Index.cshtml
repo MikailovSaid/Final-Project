@@ -5,7 +5,7 @@
         <div class="banner-wrapper">
             <div class="banner">
                 <div class="img">
-                    <img src="@Model.IntroHome.Image"
+                    <img src="~/assets/img/introhome/@Model.IntroHome.Image"
                          alt="">
                 </div>
                 <div class="text">
@@ -14,7 +14,7 @@
                         @foreach (var item in Model.Genders)
                         {
                             <div class="item">
-                                <a asp-controller="Shop" asp-action="Index" asp-route-categoryId="@item.Id">Shop @item.Name</a>
+                                <a asp-controller="Shop" asp-action="Index" asp-route-genderId="@item.Id">Shop @item.Name</a>
                             </div>
                         }
                     </div>
@@ -31,20 +31,24 @@
                 <h3 style="font-size: 36px; font-weight: 500;">Best Sellers</h3>
             </div>
             <div id="owl-demo" class="owl-carousel owl-theme">
-                @foreach (var item in Model.BestSellers)
+
+                @foreach (var item in Model.Products)
                 {
-                    <div class="item">
-                        <a href="">
-                            <img src="@item.Image"
-                                 alt="">
-                        </a>
-                        <h2 class="title">
-                            <a href="">@item.Title</a>
-                        </h2>
-                        <div class="price">
-                            <a href="">@item.Price</a>
+                    @if (item.Count <= 20)
+                    {
+                        <div class="item">
+                            <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.Id">
+                                <img src="@item.Image"
+                                     alt="">
+                            </a>
+                            <h2 class="title">
+                                <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
+                            </h2>
+                            <div class="price">
+                                <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.Id">@item.Price</a>
+                            </div>
                         </div>
-                    </div>
+                    }
                 }
             </div>
         </div>
@@ -55,96 +59,24 @@
     <section id="home-categories">
         <div class="container">
             <div class="row">
-                <div class="col-xl-4 col-lg-6 col-12">
-                    <div class="category">
-                        <div class="img">
-                            <a href="">
-                                <img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/home-5-banner-grid-1.jpg?fit=540%2C540&amp;ssl=1"
-                                     alt="">
-                            </a>
-                        </div>
-                        <div class="link-button">
-                            <a href="">
-                                Sunglasses <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-12">
-                    <div class="category">
-                        <div class="img">
-                            <a href="">
-                                <img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/home-5-banner-grid-2.jpg?fit=540%2C540&amp;ssl=1"
-                                     alt="">
-                            </a>
-                        </div>
-                        <div class="link-button">
-                            <a href="">
-                                Flat Shoes <i class="fas fa-arrow-right"></i>
-                            </a>
+                @foreach (var category in Model.Categories)
+                {
+                    <div class="col-xl-4 col-lg-6 col-12">
+                        <div class="category">
+                            <div class="img">
+                                <a href="">
+                                    <img src="@category.BackImage"
+                                         alt="">
+                                </a>
+                            </div>
+                            <div class="link-button">
+                                <a asp-controller="Shop" asp-action="Index" asp-route-categoryId="@category.Id">
+                                    @category.Name <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-12">
-                    <div class="category">
-                        <div class="img">
-                            <a href="">
-                                <img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/home-5-banner-grid-3.jpg?fit=540%2C540&amp;ssl=1"
-                                     alt="">
-                            </a>
-                        </div>
-                        <div class="link-button">
-                            <a href="">
-                                T-Shirts <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-12">
-                    <div class="category">
-                        <div class="img">
-                            <a href="">
-                                <img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/home-5-banner-grid-7.jpg?fit=540%2C540&amp;ssl=1"
-                                     alt="">
-                            </a>
-                        </div>
-                        <div class="link-button">
-                            <a href="">
-                                Sweatshirts <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-12">
-                    <div class="category">
-                        <div class="img">
-                            <a href="">
-                                <img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/home-5-banner-grid-5.jpg?fit=540%2C540&amp;ssl=1"
-                                     alt="">
-                            </a>
-                        </div>
-                        <div class="link-button">
-                            <a href="">
-                                Dresses <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-12">
-                    <div class="category">
-                        <div class="img">
-                            <a href="">
-                                <img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/home-5-banner-grid-8.jpg?fit=540%2C540&amp;ssl=1"
-                                     alt="">
-                            </a>
-                        </div>
-                        <div class="link-button">
-                            <a href="">
-                                Bags <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </section>
@@ -156,133 +88,98 @@
             <div class="header d-flex justify-content-center">
                 <h3>Top Item Of The Week</h3>
             </div>
-            <div class="content">
-                <div class="row">
-                    <div class="col-xxl-5 col-12">
-                        <div class="img">
-                            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-indicators">
-                                    <button type="button" data-bs-target="#carouselExampleIndicators"
-                                            data-bs-slide-to="0" class="active" aria-current="true"
-                                            aria-label="Slide 1"></button>
-                                    <button type="button" data-bs-target="#carouselExampleIndicators"
-                                            data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                    <button type="button" data-bs-target="#carouselExampleIndicators"
-                                            data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                </div>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/m61.jpg?fit=1000%2C1200&amp;ssl=1"
-                                             class="d-block w-100" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/12/m62.jpg?fit=1000%2C1200&amp;ssl=1"
-                                             class="d-block w-100" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://i0.wp.com/demo4.drfuri.com/razzi5/wp-content/uploads/sites/20/2020/10/m66.jpg?fit=1000%2C1200&amp;ssl=1"
-                                             class="d-block w-100" alt="...">
-                                    </div>
-                                </div>
-                                <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-7 col-12 mt-4">
-                        <div class="category">
-                            <p>Mens</p>
-                        </div>
-                        <div class="name">
-                            <h1>Leather Sneakers</h1>
-                        </div>
-                        <div class="price">
-                            <p>$85.00</p>
-                        </div>
-                        <div class="description">
-                            <p>
-                                Designed for simplicity and made from high quality materials. Its sleek geometry and
-                                material combinations creates a modern look.
-                            </p>
-                        </div>
-                        <div class="sizes" id="product-size">
-                            <p>Size</p>
-                            <div class="row">
-                                <div class="col-1">
-                                    <div class="size" data-id="1">6</div>
-                                </div>
-                                <div class="col-1">
-                                    <div class="size" data-id="2">6.5</div>
-                                </div>
-                                <div class="col-1">
-                                    <div class="size" data-id="3">7</div>
-                                </div>
-                                <div class="col-1">
-                                    <div class="size" data-id="4">7.5</div>
-                                </div>
-                                <div class="col-1">
-                                    <div class="size" data-id="5">8</div>
-                                </div>
-                                <div class="col-1">
-                                    <div class="size" data-id="6">8.5</div>
-                                </div>
-                                <div class="col-1">
-                                    <div class="size" data-id="7">9</div>
-                                </div>
-                                <div class="col-1">
-                                    <div class="size" data-id="8">9.5</div>
-                                </div>
-                                <div class="col-1">
-                                    <div class="size" data-id="9">10</div>
-                                </div>
-                                <div class="col-1">
-                                    <div class="size" data-id="10">11</div>
-                                </div>
-                                <div class="col-1">
-                                    <div class="size" data-id="11">12</div>
-                                </div>
-                                <div class="col-1">
-                                    <div class="size" data-id="12">13</div>
-                                </div>
-                                <div class="col-1">
-                                    <div class="size" data-id="13">14</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-buttons">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class="count d-flex justify-content-around">
-                                        <button id="down-count"><i class="fas fa-minus"></i></button>
-                                        <input id="count" type="number" name="" id="" min="1" value="1">
-                                        <button id="up-count"><i class="fas fa-plus"></i></button>
-                                    </div>
-                                </div>
-                                <div class="col-5 d-flex justify-content-center">
-                                    <div class="add-to-cart">
-                                        <button id="add-to-cart-btn" type="submit" disabled>
-                                            Add To Cart <i class="fas fa-shopping-bag"></i>
+            @foreach (var product in Model.Products)
+            {
+                if (product.TopItem == true)
+                {
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-xxl-5 col-12">
+                                <div class="img">
+                                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-indicators">
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
+                                                    data-bs-slide-to="0" class="active" aria-current="true"
+                                                    aria-label="Slide 1"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
+                                                    data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
+                                                    data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                        </div>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="@product.Image"
+                                                     class="d-block w-100" alt="...">
+                                            </div>
+                                        </div>
+                                        <button class="carousel-control-prev" type="button"
+                                                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button"
+                                                data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="col-3">
-                                    <div class="wishlist">
-                                        <button type="submit">Wishlist <i class="fas fa-heart"></i></button>
+                            </div>
+                            <div class="col-xxl-7 col-12 mt-4">
+                                <div class="category">
+                                    <p>@product.Gender.Name</p>
+                                </div>
+                                <div class="name">
+                                    <h1>@product.Name</h1>
+                                </div>
+                                <div class="price">
+                                    <p>$@product.Price</p>
+                                </div>
+                                <div class="description">
+                                    <p>
+                                        @product.Desc
+                                    </p>
+                                </div>
+                                <div class="sizes" id="product-size">
+                                    <p>Size</p>
+                                    <div class="row">
+                                        @foreach (var size in product.ProductSizes)
+                                        {
+                                            <div class="col-1">
+                                                <div class="size" data-id="1">@size.Size.Name</div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="product-buttons">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <div class="count d-flex justify-content-around">
+                                                <button id="down-count"><i class="fas fa-minus"></i></button>
+                                                <input id="count" type="number" name="" id="" min="1" value="1">
+                                                <button id="up-count"><i class="fas fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-5 d-flex justify-content-center">
+                                            <div class="add-to-cart">
+                                                <button id="add-to-cart-btn" type="submit" disabled>
+                                                    Add To Cart <i class="fas fa-shopping-bag"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="wishlist">
+                                                <button type="submit">Wishlist <i class="fas fa-heart"></i></button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                }
+            }
+
         </div>
     </section>
     <!-- Top Item Of The Week Ends -->

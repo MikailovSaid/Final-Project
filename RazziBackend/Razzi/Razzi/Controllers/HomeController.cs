@@ -23,13 +23,19 @@ namespace Razzi.Controllers
             List<BestSellers> bestSellers = await _context.BestSellers.ToListAsync();
             Video video = await _context.Videos.FirstOrDefaultAsync();
             List<Gender> genders = await _context.Genders.ToListAsync();
+            List<Product> products = await _context.Products.Include(m => m.ProductSizes).ThenInclude(m => m.Size)
+                .Include(m => m.Category)
+                .Include(m => m.Gender).ToListAsync();
+            List<Category> categories = await _context.Categories.Take(6).ToListAsync();
 
             HomeVM homeVM = new HomeVM()
             {
                 IntroHome = introHome,
                 BestSellers = bestSellers,
                 Video = video,
-                Genders = genders
+                Genders = genders,
+                Products = products,
+                Categories = categories,
             };
             return View(homeVM);
         }

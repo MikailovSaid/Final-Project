@@ -112,6 +112,9 @@ namespace Razzi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("BackImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -221,6 +224,9 @@ namespace Razzi.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("StockStatus")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("TopItem")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");

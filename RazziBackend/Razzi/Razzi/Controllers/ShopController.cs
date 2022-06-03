@@ -18,17 +18,22 @@ namespace Razzi.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index(int? genderId, int take = 4, int page = 1)
+        public async Task<IActionResult> Index(int? genderId, int? categoryId)
         {
+            ViewBag.ProductCount = _context.Products.Count();
             var newTake = _context.Products.Count();
-            List<Product> products = await _context.Products.ToListAsync();
+            List<Product> products = null;
+            if (genderId==null && categoryId==null)
+            {
+                products = await _context.Products.Take(4).ToListAsync();
+            }
+            else
+            {
+                products = await _context.Products.Take(4).Where(m=>m.GenderId==genderId || m.CategoryId==categoryId).ToListAsync();
+            }
             List<Gender> genders = await _context.Genders.ToListAsync();
             List<Size> sizes = await _context.Sizes.ToListAsync();
             List<Category> categories = await _context.Categories.ToListAsync();
-
-            int count = GetPageCount(products, take);
-            products = products.Skip((page - 1) * take).Take(take).ToList();
-            Pagination<Product> paginatedProduct = new Pagination<Product>(products, page, count);
 
             
 
@@ -37,24 +42,47 @@ namespace Razzi.Controllers
                 Products = products,
                 Genders = genders,
                 Sizes = sizes,
-                PaginatedProducts = paginatedProduct,
                 Categories = categories,
             };
             return View(shopVM);
         }
-        private int GetPageCount(List<Product> products, int take)
+        
+        [HttpGet]
+        public async Task<IActionResult> GetProducts(int[] genderId,int[] categoryId, int? sizeId, int take = 4, int page = 1)
         {
-            var productCount = products.Count();
-            return (int)Math.Ceiling((decimal)productCount / take);
+           
+            List<Product> products = new List<Product>();
+            if (genderId == null && categoryId == null && sizeId == null)
+            {
+                products = await _context.Products.ToListAsync();
+            }
+            else
+            {
+                foreach (var item in genderId)
+                {
+                  List<Product>  productsGender = await _context.Products
+                        .Where(m => m.GenderId == item)
+                        .ToListAsync();
+                    products.AddRange(productsGender);
+                }
+                foreach (var item in categoryId)
+                {
+                    List<Product> productsCategory = await _context.Products
+                        .Where(m => m.CategoryId == item
+                        )
+                        .ToListAsync();
+                    products.AddRange(productsCategory);
+                }
+
+            }
+            return PartialView("_ProductsPartialView", products);
         }
-        public class InputFiltersDto
+
+
+        public async Task<IActionResult> LoadMore(int skip)
         {
-            public GenderEnum Gender { get; set; }
-        }
-        public enum GenderEnum
-        {
-            Men = 1,
-            Women = 2
+            List<Product> products = await _context.Products.Skip(skip).Take(4).ToListAsync();
+            return PartialView("_ProductsPartialView", products);
         }
     }
 }

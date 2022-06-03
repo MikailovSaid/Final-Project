@@ -15,6 +15,7 @@ namespace Razzi.Models
         public string Desc { get; set; }
         public int Count { get; set; }
         public bool IsMan { get; set; }
+        public bool TopItem { get; set; }
         public List<ProductSize> ProductSizes { get; set; }
         public int GenderId { get; set; }
         public Gender Gender { get; set; }

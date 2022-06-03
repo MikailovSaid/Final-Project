@@ -1,0 +1,13 @@
+﻿@model IntroHome
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <h3 class="mt-3">Slider detail</h3>
+    <div class="row mt-5">
+        <img src="~/assets/img/introhome/@Model.Image" alt="Alternate Text" style="width:350px;height:350px" />
+        <h5 class="mt-2">@Model.Header</h5>
+    </div>
+    <a asp-action="Index" class="btn btn-primary mt-3">Go back</a>
+</div>
