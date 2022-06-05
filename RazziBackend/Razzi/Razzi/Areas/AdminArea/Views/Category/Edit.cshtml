@@ -1,0 +1,30 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="container mt-5">
+    <div class="img">
+        @if (Model.BackImage != null)
+        {
+            <img src="~/assets/img/category/@Model.BackImage" style="width:150px;height:150px" alt="category" />
+        }
+        @if (Model.BackImage == null)
+        {
+            <h5 style="color: darkred;">No Image</h5>
+        }
+    </div>
+    <form class="forms-sample" method="post" asp-action="Edit" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Photo"></label>
+            <input class="form-control" style="width:300px" asp-for="Photo">
+            <span class="text-danger" asp-validation-for="Photo"></span>
+
+            <label asp-for="Name"></label>
+            <input type="text" class="form-control" style="width:300px" asp-for="Name" maxlength="500" placeholder="Name">
+        </div>
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <a asp-action="Index" class="btn btn-light">Cancel</a>
+    </form>
+</div>

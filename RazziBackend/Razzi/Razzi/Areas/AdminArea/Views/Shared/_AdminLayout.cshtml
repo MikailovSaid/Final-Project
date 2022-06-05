@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Majestic Admin</title>
+    <title>Razzi Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="~/admin/vendors/base/vendor.bundle.base.css">
@@ -27,7 +27,7 @@
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex justify-content-center">
                 <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-                    <a class="navbar-brand brand-logo" href="index.html"><img src="~/admin/images/logo.svg" alt="logo" /></a>
+                    <a class="navbar-brand brand-logo" href="index.html"><img src="~/assets/img/Logo-dark.png" alt="logo" /></a>
                     <a class="navbar-brand brand-logo-mini" href="index.html"><img src="~/admin/images/logo-mini.svg" alt="logo" /></a>
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                         <span class="mdi mdi-sort-variant"></span>
@@ -126,8 +126,20 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="AdminArea" asp-controller="IntroHome" asp-action="Index">
-                            <i class="mdi mdi-home menu-icon"></i>
+                            <i class="mdi mdi-chart-pie menu-icon"></i>
                             <span class="menu-title">Home Introduction</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="AdminArea" asp-controller="Category" asp-action="Index">
+                            <i class="mdi mdi-chart-pie menu-icon"></i>
+                            <span class="menu-title">Categories</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="AdminArea" asp-controller="AboutArea" asp-action="Index">
+                            <i class="mdi mdi-chart-pie menu-icon"></i>
+                            <span class="menu-title">About Area</span>
                         </a>
                     </li>
                 </ul>

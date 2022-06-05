@@ -165,3 +165,10 @@ C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\
 C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\IntroHome\Index.cshtml.g.cs
 C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\IntroHome\Detail.cshtml.g.cs
 C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\IntroHome\Edit.cshtml.g.cs
+C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Category\Index.cshtml.g.cs
+C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Category\Detail.cshtml.g.cs
+C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Category\Create.cshtml.g.cs
+C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Category\Edit.cshtml.g.cs
+C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\AboutArea\Index.cshtml.g.cs
+C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\AboutArea\Detail.cshtml.g.cs
+C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\AboutArea\Edit.cshtml.g.cs

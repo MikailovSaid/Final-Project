@@ -11,7 +11,6 @@ namespace Razzi.Models
         public string Name { get; set; }
         public string BackImage { get; set; }
         public List<Product> Products { get; set; }
-        [Required]
         [NotMapped]
         public IFormFile Photo { get; set; }
     }

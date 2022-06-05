@@ -1,4 +1,4 @@
-﻿@model IntroHome
+﻿@model AboutArea
 @{
     ViewData["Title"] = "Index";
 }
@@ -6,16 +6,13 @@
 <div class="container">
     <div class="row">
         <div class="header d-flex justify-content-between mt-3">
-            <h3>Home Introduction</h3>
+            <h3>About Area</h3>
         </div>
 
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>
-                            Image
-                        </th>
                         <th>
                             Header
                         </th>
@@ -26,9 +23,6 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>
-                            <img src="~/assets/img/introhome/@Model.Image" style="width:150px;height:150px" alt="slider" />
-                        </td>
                         <td>
                             <h5>@Model.Header</h5>
                         </td>

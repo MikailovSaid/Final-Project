@@ -1,0 +1,33 @@
+﻿@model AboutArea
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container mt-5">
+    <div class="img">
+        <img src="~/assets/img/aboutarea/@Model.BackImg" style="width:150px;height:150px" alt="category" />
+        <img src="~/assets/img/aboutarea/@Model.FrontImg" style="width:150px;height:150px" alt="category" />
+    </div>
+    <form class="forms-sample" method="post" asp-action="Edit" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="BackPhoto"></label>
+            <input class="form-control" style="width:300px" asp-for="BackPhoto">
+            <span class="text-danger" asp-validation-for="BackPhoto"></span>
+
+            <label asp-for="FrontPhoto"></label>
+            <input class="form-control" style="width:300px" asp-for="FrontPhoto">
+            <span class="text-danger" asp-validation-for="BackPhoto"></span>
+
+            <label asp-for="Header"></label>
+            <input type="text" class="form-control" style="width:300px" asp-for="Header" maxlength="500" placeholder="Name">
+
+            <label asp-for="ShortDesc"></label>
+            <textarea class="form-control" asp-for="ShortDesc" maxlength="200" rows="4" cols="50"></textarea>
+
+            <label asp-for="LongDesc"></label>
+            <textarea class="form-control" asp-for="LongDesc" maxlength="500" rows="4" cols="50"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <a asp-action="Index" class="btn btn-light">Cancel</a>
+    </form>
+</div>
