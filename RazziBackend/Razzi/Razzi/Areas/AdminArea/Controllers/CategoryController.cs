@@ -46,7 +46,7 @@ namespace Razzi.Areas.AdminArea.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Category category)
         {
-
+            Category dbCategory = await _context.Categories.FirstOrDefaultAsync();
             if (ModelState.ValidationState == ModelValidationState.Invalid) return View();
 
             if (category.Photo != null)
@@ -72,6 +72,18 @@ namespace Razzi.Areas.AdminArea.Controllers
                 }
 
                 category.BackImage = fileName;
+            }
+
+            if (dbCategory.Name.ToLower().Trim() == category.Name.ToLower().Trim())
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            bool isExist = _context.Categories.Any(m => m.Name.ToLower().Trim() == category.Name.ToLower().Trim());
+            if (isExist)
+            {
+                ModelState.AddModelError("Name", "This category already exists");
+                return View();
             }
 
             await _context.AddAsync(category);
@@ -165,7 +177,7 @@ namespace Razzi.Areas.AdminArea.Controllers
                 if (isExist)
                 {
                     ModelState.AddModelError("Name", "This category already exists");
-                    return View();
+                    return View(category);
                 }
 
                 dbCategory.Name = category.Name;

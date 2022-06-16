@@ -172,3 +172,9 @@ C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\
 C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\AboutArea\Index.cshtml.g.cs
 C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\AboutArea\Detail.cshtml.g.cs
 C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\AboutArea\Edit.cshtml.g.cs
+C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Gender\Index.cshtml.g.cs
+C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Gender\Create.cshtml.g.cs
+C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Gender\Edit.cshtml.g.cs
+C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Video\Index.cshtml.g.cs
+C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Video\Edit.cshtml.g.cs
+C:\Users\mikay\OneDrive\Рабочий стол\P126\Final Project\RazziBackend\Razzi\Razzi\bin\Debug\netcoreapp3.1\System.Text.Json.dll

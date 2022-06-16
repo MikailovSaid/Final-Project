@@ -1,0 +1,78 @@
+﻿@model List<WishListDetailVM>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main style="padding-top: 150px;">
+    <section id="wishlist">
+        <div class="container">
+            <div class="header">
+                <h1>Wishlist</h1>
+            </div>
+            <div class="product-info">
+                <div class="row">
+                    <div class="col-7">
+                        <div class="name d-flex justify-content-center">Product name</div>
+                    </div>
+                    <div class="col-1">
+                        <div class="price">Unit price</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="stock-status">Stock status</div>
+                    </div>
+                </div>
+            </div>
+            @if (Model == null)
+            {
+                <div class="product">
+                    <h1>Your wishlist is Empty</h1>
+                </div>
+            }
+            @if (Model != null)
+            {
+                @foreach (var product in Model)
+                {
+                    <div class="product">
+                        <div class="row">
+                            <div class="col-1">
+                                <form asp-controller="ProductDetail" asp-action="RemoveWishList" asp-route-id="@product.Id">
+                                    <div class="remove-btn pt">
+                                        <button style="border: none; background-color:white;" type="submit"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-2">
+                                <div class="img">
+                                    <img style="width: 97px; height: 113px;" src="~/assets/img/product/@product.Image" alt="">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="name pt">@product.Name</div>
+                            </div>
+                            <div class="col-1">
+                                <div class="price pt">$@product.Price</div>
+                            </div>
+                            <div class="col-1">
+                                @if (product.StockStatus == true)
+                                {
+                                    <div class="stock-status pt">In Stock</div>
+                                }
+                                @if (product.StockStatus != true)
+                                {
+                                    <div class="pt">Out of order</div>
+                                }
+                            </div>
+                            <div class="col-3">
+                                <form asp-controller="Shop" asp-action="AddBasket" asp-route-id="@product.Id" asp-route-count="1">
+                                    <div class="add-to-cart-btn">
+                                        <button type="submit"><i class="fas fa-shopping-bag"></i> Add to cart</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </section>
+</main>

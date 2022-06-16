@@ -1,0 +1,22 @@
+﻿@model Video
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="container my-5">
+    <div class="video">
+        <video class="elementor-video"
+               src="@Model.VideoLink" style="width: 1000px; height: 500px;"
+               autoplay="" loop="" playsinline=""></video>
+    </div>
+    <form class="forms-sample" method="post" asp-action="Edit" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="VideoLink"></label>
+            <input type="text" class="form-control" style="width:300px" asp-for="VideoLink" maxlength="1500" placeholder="Link">
+            <span class="text-danger" asp-validation-for="VideoLink"></span>
+        </div>
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <a asp-action="Index" class="btn btn-light">Cancel</a>
+    </form>
+</div>

@@ -1,27 +1,24 @@
-﻿@model List<Product>
+﻿@model ICollection<Product>
 
-<div class="content">
-    <div class="row">
-        @foreach (var product in Model)
-        {
-            <div class="col-3">
-                <div class="product">
-                    <div class="img">
-                        <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@product.Id">
-                            <img src="@product.Image"
-                                 alt="">
-                        </a>
-                    </div>
-                    <div class="name">
-                        <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@product.Id">@product.Name</a>
 
-                    </div>
-                    <span class="price">$@product.Price</span>
-                </div>
+@foreach (var product in Model)
+{
+    <div class="col-3">
+        <div class="product">
+            <div class="img">
+                <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@product.Id">
+                    <img src="~/assets/img/product/@product.Image"
+                         alt="">
+                </a>
             </div>
-        }
+            <div class="name">
+                <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@product.Id">@product.Name</a>
+
+            </div>
+            <span class="price">$@product.RealPrice</span>
+        </div>
     </div>
-</div>
+}
 
 @*<div class="pagniate">
         <nav aria-label="...">

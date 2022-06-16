@@ -1,0 +1,37 @@
+﻿@using Razzi.ViewModels.Account
+@model RegisterVM
+<div class="register">
+    <div class="account">
+        <div class="header">
+            <h2>Register</h2>
+        </div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form asp-="Account" asp-controller="Account" asp-action="Register">
+            <div class="input-item">
+                <input asp-for="FullName" type="text" name="fullname" id="" placeholder="Full name *">
+            </div>
+            <span asp-validation-for="FullName" class="text-danger"></span>
+            <div class="input-item">
+                <input asp-for="Username" type="text" name="username" id="" placeholder="Username *">
+            </div>
+            <span asp-validation-for="Username" class="text-danger"></span>
+            <div class="input-item">
+                <input asp-for="Email" type="email" name="email" id="" placeholder="Email Address *">
+            </div>
+            <span asp-validation-for="Email" class="text-danger"></span>
+            <div class="input-item">
+                <input asp-for="Password" type="password" class="hidden" placeholder="Password *">
+                <i class="fas fa-eye show-password"></i></i>
+            </div>
+            <span asp-validation-for="Password" class="text-danger"></span>
+            <div class="input-item">
+                <input asp-for="ConfirmPassword" type="password" class="hidden" id="" placeholder="Confirm Password *">
+                <i class="fas fa-eye show-password"></i></i>
+            </div>
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            <div class="submit-btn">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+</div>

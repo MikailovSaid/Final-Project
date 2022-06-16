@@ -1,0 +1,71 @@
+﻿@model List<BasketDetailVM>
+@{
+    ViewData["Title"] = "Index";
+    decimal totalPrice = 0;
+}
+
+<main style="padding-top: 150px;">
+    <section id="cart">
+        <div class="container">
+            <div class="header">
+                <h1>Cart</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-12">
+                    @if (Model == null)
+                    {
+                        <div class="product">
+                            <h1>No items in cart</h1>
+                        </div>
+                    }
+                    @if (Model != null)
+                    {
+                        @foreach (var product in Model)
+                        {
+                            <div class="product">
+                                <div class="row">
+                                    <div class="col-md-3 col-12">
+                                        <div class="img">
+                                            <img style="width: 140px; height: 164px;"
+                                                 src="~/assets/img/product/@product.Image"
+                                                 alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 col-6">
+                                        <div class="name pt">@product.Name</div>
+                                        <div class="pt pt-1">
+                                            Count: @product.Count
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-6">
+                                        <div class="price pt">$@product.Price</div>
+                                        <form asp-controller="Shop" asp-action="RemoveBasket" asp-route-id="@product.Id" method="post">
+                                            <div class="remove-btn pt">
+                                                <button style="border: none; background-color:white;" type="submit"><i class="fas fa-times"></i></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <hr class="pt">
+                            </div>
+                            totalPrice += product.Price;
+                        }
+                    }
+                </div>
+                <div class="col-lg-4 col-12">
+                    <div class="checkout">
+                        <div class="total-price d-flex justify-content-around">
+                            <h2>Total</h2>
+                            <p>$@totalPrice</p>
+                        </div>
+                        <a asp-controller="CheckOut" asp-action="Index">
+                            <div class="checkout-btn">
+                                Proceed to checkout
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

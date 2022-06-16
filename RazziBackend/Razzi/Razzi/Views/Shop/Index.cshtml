@@ -20,7 +20,15 @@
                                     {
                                         <div class="item">
                                             <label class="checkbox bounce">
-                                                <input class="checkbox-input" type="checkbox" value="@item.Id">
+                                                @if (item.Id == ViewBag.categoryId)
+                                                {
+                                                    <input class="checkbox-input" checked type="checkbox" value="@item.Id">
+                                                }
+                                                else
+                                                {
+                                                    <input class="checkbox-input" type="checkbox" value="@item.Id">
+                                                }
+
                                                 <svg viewBox="0 0 21 21">
                                                     <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                                                 </svg>
@@ -80,43 +88,26 @@
                                     <span>Price</span>
                                     <span class="open-btn"><i class='fas fa-angle-down'></i></span>
                                 </div>
-                                <div class="filter-control active">
-                                    <div class="item">
-                                        <label class="checkbox bounce">
-                                            <input type="checkbox">
-                                            <svg viewBox="0 0 21 21">
-                                                <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
-                                            </svg>
-                                        </label>
-                                        <span>$10.00 - $49.00</span>
-                                    </div>
-                                    <div class="item">
-                                        <label class="checkbox bounce">
-                                            <input type="checkbox">
-                                            <svg viewBox="0 0 21 21">
-                                                <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
-                                            </svg>
-                                        </label>
-                                        <span>$50.00 - $99.00</span>
-                                    </div>
-                                    <div class="item">
-                                        <label class="checkbox bounce">
-                                            <input type="checkbox">
-                                            <svg viewBox="0 0 21 21">
-                                                <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
-                                            </svg>
-                                        </label>
-                                        <span>$100.00 - $199.00</span>
-                                    </div>
-                                    <div class="item">
-                                        <label class="checkbox bounce">
-                                            <input type="checkbox">
-                                            <svg viewBox="0 0 21 21">
-                                                <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
-                                            </svg>
-                                        </label>
-                                        <span>$200.00 +</span>
-                                    </div>
+                                <div id="price" class="filter-control active">
+                                    @foreach (var price in Model.Prices)
+                                    {
+                                        <div class="item">
+                                            <label class="checkbox bounce">
+                                                <input type="checkbox" value="@price.Id">
+                                                <svg viewBox="0 0 21 21">
+                                                    <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                                                </svg>
+                                            </label>
+                                            @if (price.MaxPrice == null)
+                                            {
+                                                <span>$@price.MinPrice +</span>
+                                            }
+                                            @if (price.MaxPrice != null)
+                                            {
+                                                <span>$@price.MinPrice - $@price.MaxPrice</span>
+                                            }
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -141,21 +132,15 @@
                                 <div class="header">
                                     <h1>Shop</h1>
                                 </div>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button"
-                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Default sorting
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li><a class="dropdown-item" href="#">Sort by price: low to high</a></li>
-                                        <li><a class="dropdown-item" href="#">Sort by price: high to low</a></li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div id="product-list">
-                                <partial name="_ProductsPartialView" model="Model.Products" />
+                                <div class="content">
+                                    <div class="row">
+                                        <partial name="_ProductsPartialView" model="Model.Products" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -176,44 +161,53 @@
         var genders = $('#gender').find('input[type="checkbox"]');
         var categories = $('#category').find('input[type="checkbox"]');
         var sizes = $('#product-size').find('.size');
+        var prices = $('#price').find('input[type="checkbox"]')
 
-        let gens = [];
+        let genderIds = [];
+        let categoryIds = [];
+        let sizesIds = [];
+        let priceIds = [];
+        var filters = {
+            "genders": genderIds,
+            "categories": categoryIds,
+            "sizes": sizesIds,
+            "prices": priceIds
+        };
+        
        
         $(genders).click(function ()
         {
 
             if ($(this).prop("checked") == true) {
-                gens.push(parseInt($(this).val()));
-
+                filters.genders.push(parseInt($(this).val()));
                 $.ajax(
                     {
-                        type: "GET",
+                        type: "POST",
                         url: '/Shop/GetProducts',
-                        data: $.param({ genderId: gens }, true),
+                        data: JSON.stringify(filters),
                         contentType: 'application/json; charset=utf-8',
                    
                         success: function (res) {
-                            $('#product-list').html(res);
+                            $('#product-list').find('.row').html(res);
                         }
                     })
             }
             else if ($(this).prop("checked") == false) {
-                var id = 2;
-                var index = gens.map(x => {
+                var index = filters.genders.map(x => {
                     return x.Id;
-                }).indexOf(id);
+                }).indexOf($(this).val());
 
-                gens.splice(index, 1);
-                console.log(gens);
+                filters.genders.splice(index, 1);
+                console.log(filters.genders);
                 $.ajax(
                 {
                     url :"/Shop/GetProducts",
-                    type: 'GET',
-                    data: $.param({ genderId: gens }, true),
+                        type: 'POST',
+                        data: JSON.stringify(filters),
                     contentType: 'application/json; charset=utf-8',
 
                     success: function (res) {
-                        $('#product-list').html(res);
+                        $('#product-list').find('.row').html(res);
                     }
                 })
             }
@@ -221,84 +215,138 @@
         })
         $(categories).click(function () {
             console.log("ok");
-            gens.push(parseInt($(this).val()));
+            
             if ($(this).prop("checked") == true) {
+                filters.categories.push(parseInt($(this).val()));
                 $.ajax({
-                    type: "GET",
+                    type: "POST",
                     url: '/Shop/GetProducts',
-                    data: $.param({ categoryId: gens }, true),
+                    data: JSON.stringify(filters),
                     contentType: 'application/json; charset=utf-8',
 
                     success: function (res) {
-                        $('#product-list').html(res);
+                        $('#product-list').find('.row').html(res);
                     }
                 })
             }
             else if ($(this).prop("checked") == false) {
-                var id = 2;
-                var index = gens.map(x => {
+                var index = filters.categories.map(x => {
                     return x.Id;
-                }).indexOf(id);
+                }).indexOf($(this).val());
+                filters.categories.splice(index, 1);
 
                 $.ajax({
                     url: "/Shop/GetProducts",
-                    type: 'GET',
-                    data: {
-                        categoryId: null
-                    },
+                    type: 'POST',
+                    data: JSON.stringify(filters),
+                    contentType: 'application/json; charset=utf-8',
                     success: function (res) {
-                        $('#product-list').html(res);
+                        $('#product-list').find('.row').html(res);
                     }
                 })
             }
         })
-        $("#product-size").find('.size').click(function () {
+        $(sizes).click(function () {
             if (!$(this).hasClass('active')) {
+                filters.sizes.push(parseInt($(this).attr('id')));
                 $.ajax({
-                    url: "https://localhost:44331/Shop/GetProducts",
-                    type: 'GET',
-                    data: {
-                        sizeId: $(this).attr("id")
-                    },
+                    url: "/Shop/GetProducts",
+                    type: 'POST',
+                    data: JSON.stringify(filters),
+                    contentType: 'application/json; charset=utf-8',
                     success: function (res) {
-                        $('#product-list').html(res);
+                        $('#product-list').find('.row').html(res);
                     }
                 })
             }
             else {
+                var index = filters.sizes.map(x => {
+                    return x.Id;
+                }).indexOf(parseInt($(this).filter('.active').attr('id')));
+                filters.sizes.splice(index, 1);
                 $.ajax({
-                    url: "https://localhost:44331/Shop/GetProducts",
-                    type: 'GET',
-                    data: {
-                        sizeId: null
-                    },
+                    url: "/Shop/GetProducts",
+                    type: 'POST',
+                    data: JSON.stringify(filters),
+                    contentType: 'application/json; charset=utf-8',
                     success: function (res) {
-                        $('#product-list').html(res);
+                        $('#product-list').find('.row').html(res);
+                    }
+                })
+            }
+        })
+        $(prices).click(function () {
+            if ($(this).prop("checked") == true) {
+                filters.prices.push(parseInt($(this).val()));
+                $.ajax({
+                    type: "POST",
+                    url: '/Shop/GetProducts',
+                    data: JSON.stringify(filters),
+                    contentType: 'application/json; charset=utf-8',
+
+                    success: function (res) {
+                        $('#product-list').find('.row').html(res);
+                    }
+                })
+            }
+            else if ($(this).prop("checked") == false) {
+                var index = filters.prices.map(x => {
+                    return x.Id;
+                }).indexOf($(this).val());
+                filters.prices.splice(index, 1);
+
+                $.ajax({
+                    url: "/Shop/GetProducts",
+                    type: 'POST',
+                    data: JSON.stringify(filters),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (res) {
+                        $('#product-list').find('.row').html(res);
                     }
                 })
             }
         })
 
 
+
         $('#load-more').click(function () {
-            let parent = $('#product-list')
+            let parent = $('#product-list').find('.row')
             let count = $("#product-list").find('.col-3').length
             let productCountDb = $("#product-count").val()
             $.ajax({
                 url: "/Shop/LoadMore",
-                type: "GET",
+                type: "POST",
                 data: {
-                    skip: count
+                    skip: count,
+                    take: 4
                 },
                 success: function (res) {
                     parent.append(res)
-                    
                     count = $("#product-list").find('.col-3').length
                     if (count == productCountDb) {
-                        $("#load-more").remove();
+                        $("#load-more").hide();
+                    } else {
+                        $("#load-more").show();
                     }
                 }
             })
         })
+    </script>
+
+    <script>
+        $('#btnSearch').click(function (e) {
+            e.preventDefault();
+            $.ajax(
+                {
+                    type: "GET",
+                    url: "@Url.Action("Search", "Shop")",
+                    data: { searchString: $('#search-text').val()},
+                    success: function (res) {
+                        $('#product-list').find('.row').html(res);
+                    }
+                })
+            closeSearchNav();
+        });
+
     </script>
 }

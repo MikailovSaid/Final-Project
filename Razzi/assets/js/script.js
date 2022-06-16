@@ -44,15 +44,17 @@ $(document).ready(function () {
 
     var count = 0;
     $("#up-count").click(function () {
+        count = parseInt($(this).parent().find('#count').val());
         if (count + 1 < 6) {
-            count = parseInt($(this).parent().find('#count').val());
+            
             count = count + 1;
             $(this).parent().find('#count').val(count);
         }
     })
     $("#down-count").click(function () {
+        count = parseInt($(this).parent().find('#count').val());
         if (count - 1 > 0) {
-            count = parseInt($(this).parent().find('#count').val());
+            
             count = count - 1;
             $(this).parent().find('#count').val(count);
         }

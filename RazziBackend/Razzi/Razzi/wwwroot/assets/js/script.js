@@ -35,7 +35,7 @@ $(document).ready(function () {
             $("#add-to-cart-btn").removeAttr("disabled")
             $("#add-to-cart-btn").addClass("active-btn")
         }
-        else{
+        else {
             $(this).removeClass("active");
             $("#add-to-cart-btn").prop('disabled', true);
             $("#add-to-cart-btn").removeClass("active-btn");
@@ -93,4 +93,7 @@ $(document).ready(function () {
     }).on('mouseup mouseleave', function(){
         $(this).prev().attr('type','password');
     });
+
+
+    
 });

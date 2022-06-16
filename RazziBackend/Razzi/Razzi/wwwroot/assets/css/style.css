@@ -3,6 +3,13 @@
   margin-bottom: 50px;
 }
 
+#load-more {
+    background-color: white;
+    color: black;
+    height: 34px;
+    width: 108px;
+}
+
 #product_filter .product-filter .head {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -239,11 +246,12 @@
 }
 
 .account {
-  background-color: white;
-  padding-top: 40px;
-  padding-left: 50px;
-  padding-right: 50px;
-  height: 500px;
+    background-color: white;
+    padding-top: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 40px;
+    width: 660px;
 }
 
 .account .header {
@@ -255,7 +263,7 @@
 }
 
 .account .input-item {
-  margin-bottom: 30px;
+  margin-top: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -286,12 +294,16 @@
   color: black;
 }
 
-.account .submit-btn button {
-  width: 160px;
-  height: 46px;
-  background-color: black;
-  color: white;
-}
+    .account .submit-btn{
+        margin-top: 30px;
+    }
+
+    .account .submit-btn button {
+        width: 160px;
+        height: 46px;
+        background-color: black;
+        color: white;
+    }
 
 #about-intro .banner {
   position: relative;
@@ -1126,13 +1138,13 @@ body a {
   color: black;
 }
 
-#top-item-of-week .content .product-buttons .add-to-cart button {
-  width: 220px;
-  height: 56px;
-  border: none;
-  color: white;
-  background-color: #1f1f1f6c;
-}
+    #top-item-of-week .content .product-buttons .add-to-cart button {
+        width: 220px;
+        height: 56px;
+        border: none;
+        color: white;
+        background-color: #1f1f1f6c;
+    }
 
 #top-item-of-week .content .product-buttons .add-to-cart button i {
   padding-left: 10px;

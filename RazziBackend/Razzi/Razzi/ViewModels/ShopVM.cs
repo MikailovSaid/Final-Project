@@ -11,5 +11,6 @@ namespace Razzi.ViewModels
         public List<Size> Sizes { get; set; }
         public List<Category> Categories { get; set; }
         public Pagination<Product> PaginatedProducts { get; set; }
+        public List<Price> Prices { get; set; }
     }
 }

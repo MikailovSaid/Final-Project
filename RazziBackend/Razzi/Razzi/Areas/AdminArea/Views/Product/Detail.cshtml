@@ -1,0 +1,25 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container my-3">
+    <h3>Product detail</h3>
+    <div class="row mt-5" style="width: 400px">
+        <img src="~/assets/img/product/@Model.Image" alt="Alternate Text" style="width:350px;height:350px" />
+        <h5 class="mt-2">Name: @Model.Name</h5>
+        <p><b>Description:</b> @Model.Desc</p>
+        <p><b>Price:</b> @Model.RealPrice</p>
+        @if (Model.StockStatus == true)
+        {
+            <p><b>Stock status:</b> In stock</p>
+        }
+        @if (Model.StockStatus == false)
+        {
+            <p><b>Stock status:</b> Out of order</p>
+        }
+        <p><b>Category:</b> @Model.Category.Name</p>
+        <p><b>Gender:</b> @Model.Gender.Name</p>
+    </div>
+    <a asp-action="Index" class="btn btn-primary mt-3">Go back</a>
+</div>

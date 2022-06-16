@@ -22,20 +22,21 @@
         <a asp-controller="Home" asp-action="Index">Home</a>
         <a asp-controller="Shop" asp-action="Index">Shop</a>
         <a asp-controller="About" asp-action="Index">About Us</a>
-        <a href="./wishlist.html">Wishlist</a>
-        <a href="./cart.html">Cart</a>
+        <a asp-controller="WishList" asp-action="Index">Wishlist</a>
+        <a asp-controller="Basket" asp-action="Index">Cart</a>
     </div>
     <div id="searchSidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeSearchNav()">&times;</a>
         <div class="search-wrapper">
-            <form>
+            <form method="get">
                 <div class="search d-flex">
-                    <input type="search" placeholder="Search for items" aria-label="Search">
-                    <button type="submit"><i class="fas fa-search"></i></button>
+                    <input id="search-text" type="text" placeholder="Search for items" aria-label="Search">
+                    <button id="btnSearch"><i class="fas fa-search"></i></button>
                 </div>
             </form>
         </div>
     </div>
+   
     <header>
         <div class="header_wrapper">
             <div class="container">
@@ -55,27 +56,29 @@
                         <div class="col-6">
                             <div class="header-right">
                                 <div class="row">
+                                    @if (ViewContext.RouteData.Values["Controller"].ToString().ToLower() == "shop")
+                                    {
+                                        <div class="col-1">
+                                            <div class="header_item">
+                                                <span style="cursor: pointer;" onclick="openSearchNav()">
+                                                    <i class="fas fa-search"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    }
                                     <div class="col-1">
                                         <div class="header_item">
-                                            <span style="cursor: pointer;" onclick="openSearchNav()">
-                                                <i class="fas fa-search"></i>
-                                            </span>
+                                            <a asp-controller="Account" asp-action="Index"><i class="fas fa-user"></i></a>
                                         </div>
                                     </div>
                                     <div class="col-1">
                                         <div class="header_item">
-                                            <a href="./account.html"><i class="fas fa-user"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="col-1">
-                                        <div class="header_item">
-                                            <a href="./wishlist.html"><i class="fas fa-heart"></i></a>
+                                            <a asp-controller="WishList" asp-action="Index"><i class="fas fa-heart"></i></a>
                                         </div>
                                     </div>
                                     <div class="col-1">
                                         <div class="header_item busket">
-                                            <a href="./cart.html"><i class="fas fa-shopping-bag"></i></a>
-                                            <div class="count">0</div>
+                                            <a asp-controller="Basket" asp-action="Index"><i class="fas fa-shopping-bag"></i></a>
                                         </div>
                                     </div>
                                     <div class="col-1">
@@ -199,6 +202,6 @@
     <script src="~/assets/js/owl.carousel.js"></script>
     <script src="~/assets/js/script.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    
 </body>
-
 </html>

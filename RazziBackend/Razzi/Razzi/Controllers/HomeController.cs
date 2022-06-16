@@ -22,7 +22,7 @@ namespace Razzi.Controllers
             IntroHome introHome = await _context.IntroHomes.FirstOrDefaultAsync();
             List<BestSellers> bestSellers = await _context.BestSellers.ToListAsync();
             Video video = await _context.Videos.FirstOrDefaultAsync();
-            List<Gender> genders = await _context.Genders.ToListAsync();
+            List<Gender> genders = await _context.Genders.Take(2).ToListAsync();
             List<Product> products = await _context.Products.Include(m => m.ProductSizes).ThenInclude(m => m.Size)
                 .Include(m => m.Category)
                 .Include(m => m.Gender).ToListAsync();
